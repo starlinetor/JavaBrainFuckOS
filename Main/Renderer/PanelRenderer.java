@@ -1,6 +1,7 @@
 package Main.Renderer;
 
-import Main.Font.CharExtractor;
+import Main.AdditionalClasses.Utils.MathUtils;
+import Main.Renderer.Font.CharExtractor;
 import Main.Main;
 
 import javax.swing.*;
@@ -32,20 +33,12 @@ public class PanelRenderer extends JPanel {
         for (int y = 0; y < Main.YPixelCount; y++){
             for(int x = 0; x < Main.XPixelCount ; x++){
                 //here it uses the charExtractor Library to get the needed letter.
-                BufferedImage image = charExtractor.charToImage(text[cordsToLinear(x,y)]);
+                BufferedImage image = charExtractor.charToImage(text[MathUtils.cordsToLinear(x,y,Main.XPixelCount)]);
                 //Prints the letter on the screen.
-                //TODO : Here is using 8 and 15 not from a variable. Is not really needed but is annoying, make a variable somewhere and use it here.
-                g2D.drawImage(image, x * 8, y * 15, null);
+                g2D.drawImage(image, x * charExtractor.width, y * charExtractor.height, null);
             }
         }
 
 
-    }
-
-    //this method transforms a pair of coordinates to the index of the array. is not multipourpose and works only with the original array
-    //TODO: this should probably be moved somewhere else because is used everywhere. Also a general pourpose version would be nice.
-
-    public static int cordsToLinear(int x, int y){
-        return x + Main.XPixelCount*y;
     }
 }

@@ -1,4 +1,6 @@
 package Main.Renderer;
+import Main.Data.Data;
+
 import javax.swing.*;
 
 public class FrameRenderer extends JFrame {
@@ -6,9 +8,9 @@ public class FrameRenderer extends JFrame {
     PanelRenderer panelRenderer;
 
     //these are the dimension of each letter
-    //TODO : this is the third time i find these stupid numbers in a random place, make them unique
-    public static final int pixelWidth = 8;
-    public static final int pixelHeight = 15;
+
+    public static final int pixelWidth = (int) Data.loadFontJSON().getJSONObject("settings").get("width");
+    public static final int pixelHeight = (int) Data.loadFontJSON().getJSONObject("settings").get("height");
 
     public FrameRenderer(int width, int height){
         //Instantiate the frame renderer and setups the window
@@ -18,7 +20,7 @@ public class FrameRenderer extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //adds the panel to the window
         this.add(panelRenderer);
-        //The windows is not resizable this is because i want to a fixed screen dimension
+        //The window is not resizable this is because i want to a fixed screen dimension
         this.setResizable(false);
         //No clue what this does exactly
         this.pack();
