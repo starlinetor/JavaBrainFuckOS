@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class PanelRenderer extends JPanel {
+public class PanelRenderer extends JPanel{
 
     //here is stored the Char Array to be printed
     char[] text = new char[Main.screenLength];
@@ -33,7 +33,7 @@ public class PanelRenderer extends JPanel {
         for (int y = 0; y < Main.YPixelCount; y++){
             for(int x = 0; x < Main.XPixelCount ; x++){
                 //here it uses the charExtractor Library to get the needed letter.
-                BufferedImage image = charExtractor.charToImage(text[MathUtils.cordsToLinear(x,y,Main.XPixelCount)]);
+                BufferedImage image = charExtractor.charToImage(text[MathUtils.coordsToLinear(x,y,Main.XPixelCount)]);
                 //Prints the letter on the screen.
                 g2D.drawImage(image, x * charExtractor.width, y * charExtractor.height, null);
             }

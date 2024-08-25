@@ -1,5 +1,6 @@
 package Main.Renderer;
 import Main.Data.Data;
+import Main.OSLogic.InputHandler;
 
 import javax.swing.*;
 
@@ -12,7 +13,7 @@ public class FrameRenderer extends JFrame {
     public static final int pixelWidth = (int) Data.loadFontJSON().getJSONObject("settings").get("width");
     public static final int pixelHeight = (int) Data.loadFontJSON().getJSONObject("settings").get("height");
 
-    public FrameRenderer(int width, int height){
+    public FrameRenderer(int width, int height, InputHandler inputHandler){
         //Instantiate the frame renderer and setups the window
         //Creates new panel with precise dimensions
         this.panelRenderer = new PanelRenderer(width,height);
@@ -28,6 +29,8 @@ public class FrameRenderer extends JFrame {
         this.setLocationRelativeTo(null);
         //The window is visible
         this.setVisible(true);
+        //Adding keyListener
+        this.addKeyListener(inputHandler);
     }
 
     //get functions

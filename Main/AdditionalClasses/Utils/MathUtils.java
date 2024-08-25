@@ -1,6 +1,6 @@
 package Main.AdditionalClasses.Utils;
 
-import Main.Main;
+import javax.lang.model.type.ErrorType;
 
 public class MathUtils {
 
@@ -10,8 +10,20 @@ public class MathUtils {
     }
 
     //this method transforms a pair of coordinates to the index of the array
-    public static int cordsToLinear(int x, int y,int rows){
-        return x + rows * y;
+    public static int coordsToLinear(int x, int y, int columns){
+        return x + columns * y;
     }
 
+    //inverted function of the previous
+    public static int linearToCoords(int linear, int columns, char coordinate) throws Exception {
+
+        if(coordinate == 'x') {
+            return linear % columns;
+        }if(coordinate == 'y'){
+            return linear / columns;
+        }else{
+            System.err.println("ERROR");
+            throw new java.lang.Error("coordinate accepts only x or y values");
+        }
+    }
 }

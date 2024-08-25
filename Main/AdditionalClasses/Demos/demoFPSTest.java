@@ -70,7 +70,7 @@ public class demoFPSTest {
                 timePassedChar,
                 0,
                 screen,
-                MathUtils.cordsToLinear(0, 14, Main.XPixelCount),
+                MathUtils.coordsToLinear(0, 14, Main.XPixelCount),
                 timePassedChar.length);
     }
 
@@ -82,7 +82,19 @@ public class demoFPSTest {
                 FPSChar,
                 0,
                 screen,
-                MathUtils.cordsToLinear(0, 15, Main.XPixelCount),
+                MathUtils.coordsToLinear(0, 15, Main.XPixelCount),
+                FPSChar.length);
+    }
+
+    public static void currentFPS(char[] screen, long currentTime, long lastTime){
+        long deltaT = currentTime-lastTime;
+        String FPSString = "FPS : " + (int) 1E+9/deltaT + "             ";
+        char[] FPSChar = FPSString.toCharArray();
+        System.arraycopy(
+                FPSChar,
+                0,
+                screen,
+                MathUtils.coordsToLinear(0, 0, Main.XPixelCount),
                 FPSChar.length);
     }
 

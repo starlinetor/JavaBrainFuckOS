@@ -3,7 +3,6 @@ package Main.AdditionalClasses.Demos;
 import Main.AdditionalClasses.Utils.MathUtils;
 import Main.AdditionalClasses.Utils.StringUtils;
 import Main.Main;
-import Main.Renderer.FrameRenderer;
 
 public class demoOsStartup {
 
@@ -45,16 +44,16 @@ public class demoOsStartup {
             System.arraycopy(
                     loading.toCharArray(),
                     0, screen,
-                    MathUtils.cordsToLinear(0,14, Main.XPixelCount),
+                    MathUtils.coordsToLinear(0,14, Main.XPixelCount),
                     loading.length());
 
             //loading bar
-            screen[MathUtils.cordsToLinear(0,15,Main.XPixelCount)] = '\\';
-            screen[MathUtils.cordsToLinear(1,15,Main.XPixelCount)] = '=';
-            screen[MathUtils.cordsToLinear(2,15,Main.XPixelCount)] = '/';
+            screen[MathUtils.coordsToLinear(0,15,Main.XPixelCount)] = '\\';
+            screen[MathUtils.coordsToLinear(1,15,Main.XPixelCount)] = '=';
+            screen[MathUtils.coordsToLinear(2,15,Main.XPixelCount)] = '/';
         }else{
-            screen[MathUtils.cordsToLinear(i,15,Main.XPixelCount)] = '=';
-            screen[MathUtils.cordsToLinear(i+1,15,Main.XPixelCount)] = '/';
+            screen[MathUtils.coordsToLinear(i,15,Main.XPixelCount)] = '=';
+            screen[MathUtils.coordsToLinear(i+1,15,Main.XPixelCount)] = '/';
         }
     }
 

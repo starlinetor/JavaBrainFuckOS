@@ -2,10 +2,14 @@ package Main;
 
 import Main.AdditionalClasses.Demos.demoOsStartup;
 import Main.AdditionalClasses.Utils.StringUtils;
+import Main.OSLogic.InputHandler;
 import Main.Renderer.FrameRenderer;
+
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import Main.AdditionalClasses.Utils.MathUtils;
 import Main.AdditionalClasses.Demos.demoFPSTest;
+import Main.AdditionalClasses.Demos.demoWriting;
 
 public class Main {
 
@@ -18,26 +22,24 @@ public class Main {
     //calculates the number of total char to make a char array of the corrent lenght
     public static final int screenLength = XPixelCount * YPixelCount;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         //declares the screen char, meaning what is printed to the screen
         char[] screen = new char[screenLength];
         Arrays.fill(screen, ' ');
 
+        //initialize input handler
+        InputHandler inputHandler = new InputHandler();
+
         //instantiating the frameRenderer
-        FrameRenderer frameRenderer = new FrameRenderer(XPixelCount*FrameRenderer.pixelWidth,YPixelCount*FrameRenderer.pixelHeight);
+        FrameRenderer frameRenderer = new FrameRenderer(XPixelCount*FrameRenderer.pixelWidth,YPixelCount*FrameRenderer.pixelHeight, inputHandler);
         frameRenderer.newFrame(screen);
 
-        demoFPSTest demo = new demoFPSTest(screen,100);
+        demoWriting demo = new demoWriting(screen,inputHandler);
 
         while (true){
-
-
             demo.runDemo();
-
             frameRenderer.newFrame(screen);
-
         }
-
     }
 }
